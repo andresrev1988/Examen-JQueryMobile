@@ -5,6 +5,7 @@
 	<title>Gestion Hotel</title>
 	<meta name="viewport" content="width= device-width, initial-scale=1" charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.4.css">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
 	<script src="js/jquery-1.11.1.js"></script>
 	<script src="js/jquery.mobile-1.4.4.js"></script>
 	<script src="js/funciones.js"></script>
@@ -31,7 +32,7 @@
 		<div data-role="content">
 			 <form>
                     <div class="ui-field-contain">
-                        <label for="nombre">Nombre:</label>                        
+                        <label for="nombre">Nombre:</label>
                         <input type="text" name="nombre" id="nombre">                      
                         <hr>                        
                         <label for="ciudad">Ciudad:</label>                        
@@ -58,10 +59,9 @@
 		<div data-role="header">
 			<h1>Lista Hoteles</h1>
 		</div>	
-		<div data-role="content">
-			<ul data-role="listview" id="lista">      			
-      			<li data-icon="false"><a href="#describeHotel">Hotel</a></li>      			
-    		</ul>    		
+		<div data-role="content">			
+			<ul data-role="listview" data-icon="false">  				
+			</ul>
         </div>
         <div>
 			<a class="ui-btn btnVolverInicio">Volver</a>
