@@ -15,18 +15,47 @@ function cargaHotel(id,hoteles){
 		$("#ciudadListar").html(hoteles[id].ciudad);
 		$("#telefonoListar").html(hoteles[id].telefono);
 		$("#estrellasListar").html(hoteles[id].estrellas);	
-		cambiarPagina("describeHotel");    					    		
+		$('#describeHotel').on('pageshow', function(){		 
+			mostrarMapa(hoteles[id].lat,hoteles[id].lon,"divMapa1");   					    		
+		});		
+		cambiarPagina("describeHotel"); 
    	});   
 }
+
+function mostrarMapa(Lat,Lon,div) {  
+	var latlngInicial = new google.maps.LatLng(Lat, Lon); 	
+    var opciones = {            
+		zoom: 5,
+		center: latlngInicial,
+		mapTypeId: google.maps.MapTypeId.ROADMAP        
+	};                   
+	mapa = new google.maps.Map(document.getElementById(div), opciones);   
+	marcador = new google.maps.Marker({            
+		position: latlngInicial,
+		map: mapa,
+		draggable: true,
+		title: "Mi punto!!"        
+	});
+	google.maps.event.addListener(marcador, 'dragend', function(event) {
+		posicionLat = event.latLng.lat();
+		posicionLon =  event.latLng.lng();								
+	});
+};
+
 $(document).ready(function() {
-	var hoteles = [];
-	
+	hoteles = [];
+	posicionLat = -0.180653;
+	posicionLon = -78.467834;
+	$('#registraHotel').on('pageshow', function(){		 		
+		mostrarMapa(posicionLat,posicionLon,"divMapa");	
+	});
+
 	$(".btnVolverInicio").click(function() {
         cambiarPagina("inicio");
     });
 
-    $("#btnRegistraHotel").click(function() {
-        cambiarPagina("registraHotel");
+    $("#btnRegistraHotel").click(function() {      	
+        cambiarPagina("registraHotel");         
     });
 
     $(".btnListarHoteles").click(function() {      	
@@ -44,7 +73,7 @@ $(document).ready(function() {
 		var nombre = $("#nombre").val();
 		var ciudad = $("#ciudad").val();
 		var telefono = $("#telefono").val();
-		var estrellas = $("#estrellas").val();
+		var estrellas = $("#estrellas").val();		
 		if(nombre==""||ciudad==""||telefono==""||estrellas==""){
 			alert("Todos los campos son necesarios!!!");
 		}else{
@@ -52,12 +81,14 @@ $(document).ready(function() {
 				nombre : nombre,
 				ciudad : ciudad,
 				telefono : telefono,
-				estrellas : estrellas
+				estrellas : estrellas,
+				lat : posicionLat,
+				lon : posicionLon
 			}
 			hoteles.push(hotel);
 			alert ("Hotel Registrado")
 			limpiarCampos();
 			cambiarPagina("inicio");
 		}
-	});       	
+	}); 	
 });

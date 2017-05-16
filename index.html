@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
 <head>
 	<title>Gestion Hotel</title>
@@ -9,9 +8,13 @@
 	<script src="js/jquery-1.11.1.js"></script>
 	<script src="js/jquery.mobile-1.4.4.js"></script>
 	<script src="js/funciones.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEB9S9C7zN6LVVeftWK0rI9i1y34tP5ss"></script>
+
 </head>
 <body>
-	<!-- PAGINA DE INCIO -->
+	<!-- PAGINA DE INCIO 
+	AIzaSyAEB9S9C7zN6LVVeftWK0rI9i1y34tP5ss
+	-->
 	<div data-role="page" id="inicio">		
 		<div data-role="header">
 			<h1>Gestión de Hotel</h1>
@@ -29,27 +32,29 @@
 		<div data-role="header">
 			<h1>Registrar Hotel</h1>
 		</div>	
-		<div data-role="content">
+		<div data-role="content" >
 			 <form>
                     <div class="ui-field-contain">
                         <label for="nombre">Nombre:</label>
-                        <input type="text" name="nombre" id="nombre">                      
-                        <hr>                        
-                        <label for="ciudad">Ciudad:</label>                        
-                        <input type="text" name="ciudad" id="ciudad">                      
-                        <hr>
-                        <label for="telefono">Teléfono:</label>                        
+                        <input type="text" name="nombre" id="nombre">
+                        
+                        <label for="ciudad">Ciudad:</label>
+                        <input type="text" name="ciudad" id="ciudad">
+                        
+                        <label for="telefono">Teléfono:</label>
                         <input type="text" name="telefono" id="telefono">
-                        <hr>
-                        <label for="nombre">Estrellas:</label>                        
-                        <input type="text" name="estrellas" id="estrellas">         
-                        <hr>
-                        <label for="ubicacion">Ubicación:</label>                        
-                    </div>
+                        
+                        <label for="nombre">Estrellas:</label>
+                        <input type="text" name="estrellas" id="estrellas">
+                                                            
+                        <label for="ubicacion"></label>
+                        <div id="divMapa"></div>
+                    </div>                          
                     <a class="ui-btn" id="btnGuardarHotel">Registrar</a>
                     <a class="ui-btn btnVolverInicio">Volver</a>
-                </form>			
-        </div>
+                </form>	
+
+        </div>		            
 		<div data-role="footer">
 			<h1>Registrar Hotel</h1>
 		</div>
@@ -85,13 +90,13 @@
 			<h4>Estrellas:</h4>
 			<span id="estrellasListar"></span>
 			<hr>
-			<h4>Ubicación:</h4>
+			<label for="ubicacion"></label>
+            <div id="divMapa1"></div>
 			<a class="ui-btn btnListarHoteles">Volver</a>
-        </div>
+        </div>        
 		<div data-role="footer">
 			<h1>Datos Hotel</h1>
 		</div>
-	</div>
-
+	</div>	
 </body>
 </html>
